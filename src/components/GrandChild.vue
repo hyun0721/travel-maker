@@ -6,24 +6,24 @@
     <section class="container">
       <div class="item">
         <span>1) Origin Data: </span>
-        <div>{{ props.originData.value }}</div>
+        <div>{{ props.originData }}</div>
       </div>
       <div class="item">
         <span>2) My Data: </span>
-        <input type="text" v-model="myData.value" />
+        <input type="text" v-model="myData" />
       </div>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { toRef } from 'vue'
 
 const props = defineProps<{
   originData: any
 }>()
 
-const myData = reactive(props.originData)
+const myData = toRef(props, 'originData')
 </script>
 
 <style scoped>

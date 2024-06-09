@@ -8,26 +8,29 @@
       </div>
       <div class="item">
         <span>2) My Data : </span>
-        <input type="text" v-model="myData.value" />
+        <input type="text" v-model="myData" />
       </div>
     </section>
     <div>
       <GrandChild :originData="myData"></GrandChild>
-      <!-- <GrandChild :originData="originData.a"></GrandChild> -->
+      <!-- <GrandChild :originData="originData"></GrandChild> -->
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import GrandChild from '@/components/GrandChild.vue'
-import { reactive } from 'vue'
+import { toRef, toRefs } from 'vue'
 
 const props = defineProps<{
   originData: any
 }>()
 
-const myData = reactive({ value: props.originData })
-// const originData = toRef(props, 'originData')
+// case 1.
+const myData = toRef(props, 'originData')
+
+// case 2.
+const { originData } = toRefs(props)
 
 // watch(myData, (newVal, oldVal) => {
 //   console.log('myData : ', newVal.value, oldVal.value)

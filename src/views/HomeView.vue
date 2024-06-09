@@ -26,14 +26,14 @@ import { ref, watch } from 'vue'
  * 1) props (ref, reactive)
  * - ref : 양방향 바인딩이 가능하나, 자식 컴포넌트의 수정사항이 반영되지 않음.
  * - reactive : 양방향 바인딩이 가능하며, 자식 컴포넌트의 수정사항이 반영됨.
+ * - toRef: 단일 항목에 대해서 ref 반응성 회복
+ * - toRefs: 객체 전체 범위에 대해서 ref 반응성 회복 (ex: props)
  *
  * 2) provie, inject
  *
- * 3) toRef
+ * 3) EventBus
  *
- * 4) EventBus
- *
- * 5) computed
+ * 4) computed
  */
 
 const originData = ref('ttt')
