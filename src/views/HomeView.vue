@@ -7,7 +7,7 @@
       <h2>Parents</h2>
       <div>
         <span>Input : </span>
-        <input type="text" v-model="originData" />
+        <input type="text" v-model="originData.value" />
       </div>
       <div>
         <FirstChildren :originData="originData"></FirstChildren>
@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import FirstChildren from '@/components/FirstChildren.vue'
 
-import { ref, watch } from 'vue'
+import { reactive, watch } from 'vue'
 /**
  * 컴포넌트 간 통신(반응형) 예제
  *
@@ -36,7 +36,8 @@ import { ref, watch } from 'vue'
  * 5) computed
  */
 
-const originData = ref('ttt')
+// const originData = ref('ttt')
+const originData = reactive({ value: 'ttt' })
 
 watch(originData, (newVal, oldVal) => {
   console.log('originData : ', newVal, oldVal)
