@@ -13,28 +13,26 @@
     </section>
     <div>
       <GrandChild :originData="myData"></GrandChild>
-      <!-- <GrandChild :originData="originData"></GrandChild> -->
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import GrandChild from '@/components/GrandChild.vue'
-import { toRef, toRefs } from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps<{
   originData: any
 }>()
 
-// case 1.
-const myData = toRef(props, 'originData')
+const emit = defineEmits(['update:originData'])
 
-// case 2.
-const { originData } = toRefs(props)
-
-// watch(myData, (newVal, oldVal) => {
-//   console.log('myData : ', newVal.value, oldVal.value)
-// })
+const myData = computed({
+  get: () => props.originData,
+  set: (newValue) => {
+    emit('update:originData', newValue)
+  }
+})
 </script>
 
 <style scoped>

@@ -24,6 +24,7 @@ const props = defineProps<{
 }>()
 
 const myData = toRef(props, 'originData')
+// const myData = props.originData        // 마운트 이후 반응성을 갖지 않으므로, 부모 변경점을 반영하지 못함.
 </script>
 
 <style scoped>

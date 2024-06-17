@@ -1,26 +1,4 @@
-<template>
-  <section>
-    <h1># 컴포넌트 간 통신(반응형) 예제 실습</h1>
-  </section>
-  <section>
-    <div class="parents-content">
-      <h2>Parents</h2>
-      <div>
-        <span>Input : </span>
-        <input type="text" v-model="originData" />
-      </div>
-      <div>
-        <FirstChildren :originData="originData"></FirstChildren>
-      </div>
-    </div>
-  </section>
-</template>
-
-<script setup lang="ts">
-import FirstChildren from '@/components/FirstChildren.vue'
-
-import { ref, watch } from 'vue'
-/**
+<!--
  * 컴포넌트 간 통신(반응형) 예제
  *
  * 1) props (ref, reactive)
@@ -34,13 +12,43 @@ import { ref, watch } from 'vue'
  * 3) EventBus
  *
  * 4) computed
- */
+ *
+ * 5) difineExpose
+ *  - 함수 노출
+ *
+-->
+<template>
+  <section>
+    <h1># 컴포넌트 간 통신(반응형) 예제 실습</h1>
+  </section>
+  <section>
+    <div class="parents-content">
+      <h2>Parents</h2>
+      <div>
+        <!-- 입력란 -->
+        <span>Input : </span>
+        <input type="text" v-model="originData" />
+      </div>
+      <div>
+        <!-- 자식에게 전달 -->
+        <FirstChildren
+          :originData="originData"
+          @update:originData="
+            (newValue) => {
+              originData = newValue
+            }
+          "
+        ></FirstChildren>
+      </div>
+    </div>
+  </section>
+</template>
 
-const originData = ref('ttt')
+<script setup lang="ts">
+import FirstChildren from '@/components/FirstChildren.vue'
+import { ref } from 'vue'
 
-watch(originData, (newVal, oldVal) => {
-  console.log('originData : ', newVal, oldVal)
-})
+const originData = ref('test value')
 </script>
 
 <style scoped>
