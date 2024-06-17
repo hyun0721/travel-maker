@@ -11,6 +11,8 @@
       <div class="item">
         <span>2) My Data: </span>
         <input type="text" v-model="myData" />
+        <!-- <input type="text" v-model="myData1" />
+        <input type="text" v-model="originData" /> -->
       </div>
     </section>
   </div>
@@ -23,7 +25,9 @@ const props = defineProps<{
   originData: any
 }>()
 
+// const myData = ref(props.originData)
 const myData = toRef(props, 'originData')
+// const { originData } = toRefs(props)
 // const myData = props.originData        // 마운트 이후 반응성을 갖지 않으므로, 부모 변경점을 반영하지 못함.
 </script>
 

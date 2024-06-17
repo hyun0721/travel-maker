@@ -25,12 +25,12 @@
     <div class="parents-content">
       <h2>Parents</h2>
       <div>
-        <!-- 입력란 -->
+        <!-- 현재 컴포넌트에서 입력받을 값 -->
         <span>Input : </span>
         <input type="text" v-model="originData" />
       </div>
       <div>
-        <!-- 자식에게 전달 -->
+        <!-- 자식에게 전달할 값 -->
         <FirstChildren
           :originData="originData"
           @update:originData="
