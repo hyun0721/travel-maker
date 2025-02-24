@@ -1,3 +1,19 @@
+<!--
+ * 컴포넌트 간 통신(반응형) 예제
+ *
+ * 1) props (ref, reactive)
+ * - ref : 양방향 바인딩이 가능하나, 자식 컴포넌트의 수정사항이 반영되지 않음.
+ * - reactive : 양방향 바인딩이 가능하며, 자식 컴포넌트의 수정사항이 반영됨.
+ *
+ * 2) provie, inject
+ *
+ * 3) toRef
+ *
+ * 4) EventBus
+ *
+ * 5) computed
+ *
+-->
 <template>
   <section>
     <h1># 컴포넌트 간 통신(반응형) 예제 실습</h1>
@@ -19,29 +35,9 @@
 <script setup lang="ts">
 import FirstChildren from '@/components/FirstChildren.vue'
 
-import { reactive, watch } from 'vue'
-/**
- * 컴포넌트 간 통신(반응형) 예제
- *
- * 1) props (ref, reactive)
- * - ref : 양방향 바인딩이 가능하나, 자식 컴포넌트의 수정사항이 반영되지 않음.
- * - reactive : 양방향 바인딩이 가능하며, 자식 컴포넌트의 수정사항이 반영됨.
- *
- * 2) provie, inject
- *
- * 3) toRef
- *
- * 4) EventBus
- *
- * 5) computed
- */
+import { reactive } from 'vue'
 
-// const originData = ref('ttt')
 const originData = reactive({ value: 'ttt' })
-
-watch(originData, (newVal, oldVal) => {
-  console.log('originData : ', newVal, oldVal)
-})
 </script>
 
 <style scoped>
